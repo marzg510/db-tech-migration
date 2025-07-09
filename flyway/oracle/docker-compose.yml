@@ -1,0 +1,29 @@
+include:
+  - ../../machines/oracle/docker-compose.yml
+x-template: &flyway-cmd
+    image: flyway/flyway:latest
+    container_name: flyway
+    volumes:
+      - ../migrations:/flyway/sql
+      - ./conf:/flyway/conf
+    depends_on:
+      - oracle_server
+    profiles:
+      - flyway
+
+services:
+  flyway-baseline:
+    <<: *flyway-cmd
+    command: baseline
+
+  flyway-migrate:
+    <<: *flyway-cmd
+    command: migrate
+
+  flyway-info:
+    <<: *flyway-cmd
+    command: info
+
+  flyway-clean:
+    <<: *flyway-cmd
+    command: clean
