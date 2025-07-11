@@ -1,8 +1,8 @@
 create table sample (
-      id   NUMBER     NOT NULL
+      id   INTEGER     NOT NULL
     , name VARCHAR(30) NOT NULL
     , ts   TIMESTAMP
-    , dt   DATETIME
+    , dt   DATE
     , PRIMARY KEY (id)
 )
 ;

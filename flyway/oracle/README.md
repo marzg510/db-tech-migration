@@ -3,13 +3,13 @@
 
 ```shell
 docker compose -f oracle-compose.yml run flyway-info
-docker compose run flyway flyway info
+docker compose run --rm flyway-info
 
 docker compose -f oracle-compose.yml run flyway-migrate
 
 docker compose -f oracle-compose.yml run flyway-baseline
 
-docker compose -f oracle-compose.yml exec oracle_server sqlplus ot/oracle@FREEPDB1
+docker compose exec oracle_server sqlplus ot/oracle@FREEPDB1
 ```
 
 ## 検証項目

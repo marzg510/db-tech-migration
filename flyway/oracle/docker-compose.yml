@@ -7,7 +7,8 @@ x-template: &flyway-cmd
       - ../migrations:/flyway/sql
       - ./conf:/flyway/conf
     depends_on:
-      - oracle_server
+      oracle_server:
+        condition: service_healthy
     profiles:
       - flyway
 
@@ -27,3 +28,7 @@ services:
   flyway-clean:
     <<: *flyway-cmd
     command: clean
+
+  flyway-repair:
+    <<: *flyway-cmd
+    command: repair
